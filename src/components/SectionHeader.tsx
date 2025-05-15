@@ -1,25 +1,46 @@
+import { twMerge } from "tailwind-merge";
+
 export const SectionHeader = ({
   eyebrow,
   title,
   description,
+  isCenter = true,
 }: {
   eyebrow: string;
   title: string;
-  description: string;
+  description?: string;
+  isCenter?: boolean;
 }) => {
   return (
-    <div>
-      <div className="flex justify-center">
-        <p className="uppercase font-semibold  bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text">
+    <div
+      className={twMerge(
+        "flex flex-col",
+        isCenter ? "items-center" : "items-start"
+      )}
+    >
+      <div className="">
+        <h3 className="uppercase text-center text-purple text-sm font-semibold mb-2 tracking-widest">
           {eyebrow}
-        </p>
+        </h3>
       </div>
-      <h2 className="font-serif text-3xl md:text-5xl text-center mt-6">
+      <h2
+        className={twMerge(
+          "font-montserrat font-black text-3xl md:text-6xl",
+          isCenter ? "text-center" : "text-left"
+        )}
+      >
         {title}
       </h2>
-      <p className="text-center md:text-lg lg:text-xl text-white/60 mt-4 max-w-md sm:mx-5 lg:mx-auto md:mx-auto">
-        {description}
-      </p>
+      {description && (
+        <p
+          className={twMerge(
+            "font-poppins md:text-base text-white/60 mt-4 max-w-md sm:mx-5",
+            isCenter ? "text-center md:mx-auto" : "text-left md:mx-0"
+          )}
+        >
+          {description}
+        </p>
+      )}
     </div>
   );
 };

@@ -1,17 +1,23 @@
-import { Header } from "@/sections/Header";
-import { HeroSection } from "@/sections/Hero";
 import { TestimonialsSection } from "@/sections/Testimonials";
-import { AboutSection } from "@/sections/About";
 import { ContactSection } from "@/sections/Contact";
+import RecentProjects from "@/sections/RecentProjects";
+import Navbar from "@/components/Navbar";
+import Hero from "@/sections/Hero/Hero";
+import AboutSection from "@/sections/AboutSection";
+import ExperienceSection from "@/sections/ExperienceSection";
 
 export default function Home() {
   return (
-    <div>
-      <Header />
-      <HeroSection />
-      <TestimonialsSection />
-      <AboutSection />
-      <ContactSection />
+    <div className="relative bg-black-100 flex justify-center items-center flex-col mx-auto overflow-clip">
+      <div className="max-w-7xl w-full">
+        <Navbar />
+        <Hero />
+        <AboutSection />
+        <ExperienceSection />
+        <RecentProjects />
+        <TestimonialsSection />
+        <ContactSection />
+      </div>
     </div>
   );
 }

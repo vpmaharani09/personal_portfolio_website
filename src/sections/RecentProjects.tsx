@@ -1,28 +1,30 @@
+"use client";
 import { SectionHeader } from "@/components/SectionHeader";
 import { FaLocationArrow } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const projects = [
   {
     id: 1,
     title: "3D Solar System Planets to Explore",
     des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+    img: "/cover2.svg",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
     link: "/ui.earth.com",
   },
   {
     id: 2,
     title: "Yoom - Video Conferencing App",
     des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
+    img: "/cover3.svg",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
     link: "/ui.yoom.com",
   },
   {
     id: 3,
     title: "AI Image SaaS - Canva Application",
     des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/p3.svg",
+    img: "/cover4.svg",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
     link: "/ui.aiimg.com",
   },
@@ -30,13 +32,23 @@ const projects = [
     id: 4,
     title: "Animated Apple Iphone 3D Website",
     des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
+    img: "/cover5.svg",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
     link: "/ui.apple.com",
   },
 ];
 
 const RecentProjects = () => {
+  // Animation variants for cards
+  const cardVariants = {
+    hiddenLeft: { x: -100, opacity: 0 },
+    hiddenRight: { x: 100, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { type: "tween", duration: 0.8, ease: "easeInOut" },
+    },
+  };
   return (
     <section id="projects">
       <div className="py-16 lg:py-24 md:px-10 px-5">
@@ -45,9 +57,19 @@ const RecentProjects = () => {
           title="My Portfolio"
         />
         <div className="flex flex-wrap items-center justify-center p-4 gap-x-20 gap-y-5 mt-10">
-          {projects.map(({ id, title, des, img, iconLists, link }) => (
-            <div
+          {projects.map(({ id, title, des, img, iconLists, link }, idx) => (
+            <motion.div
               key={id}
+              variants={cardVariants}
+              initial={idx % 2 === 0 ? "hiddenLeft" : "hiddenRight"}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{
+                type: "tween",
+                duration: 1.2,
+                delay: idx * 0.15,
+                ease: "easeInOut",
+              }}
               className="lg:min-h-[32.5rem] md:min-h-[30rem] min-h-[30rem] flex items-center justify-center w-[400px] md:w-[400px] lg:w-[400px]"
             >
               <div className="relative group/pin z-50  cursor-pointer">
@@ -67,16 +89,15 @@ const RecentProjects = () => {
                     <div className="relative z-50">
                       <div className="relative flex items-center justify-center w-[300px] md:w-[400px] lg:w-[400px] overflow-hidden h-[35vh] lg:h-[35vh] md:h-[30vh] mb-5">
                         <div
-                          className="relative w-full h-full overflow-hidden rounded-xl lg:rounded-3xl"
+                          className="relative w-full h-full overflow-hidden rounded-xl"
                           style={{ backgroundColor: "#13162D" }}
                         >
-                          <img src="/bg.png" alt="bgimg" />
+                          <img
+                            src={img}
+                            alt="bgimg"
+                            className="w-full h-full object-cover"
+                          />
                         </div>
-                        <img
-                          src={img}
-                          alt="cover"
-                          className="z-10 absolute bottom-0 w-[70vw] lg:w-[30vw] md:w-[40vw]"
-                        />
                       </div>
 
                       <h1 className="font-bold lg:text-xl md:text-lg text-base line-clamp-1">
@@ -122,7 +143,7 @@ const RecentProjects = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

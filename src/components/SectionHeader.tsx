@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
 export const SectionHeader = ({
@@ -11,8 +13,29 @@ export const SectionHeader = ({
   description?: string;
   isCenter?: boolean;
 }) => {
+  const slideFromTop = {
+    hidden: {
+      y: -100,
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+      },
+    },
+  };
+
   return (
-    <div
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      variants={slideFromTop}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{
+        duration: 0.5,
+      }}
       className={twMerge(
         "flex flex-col",
         isCenter ? "items-center" : "items-start"
@@ -41,6 +64,6 @@ export const SectionHeader = ({
           {description}
         </p>
       )}
-    </div>
+    </motion.div>
   );
 };

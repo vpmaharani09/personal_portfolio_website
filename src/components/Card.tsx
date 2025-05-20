@@ -5,7 +5,8 @@ export const Card = ({
   className,
   children,
   useBorder = true,
-}: PropsWithChildren<{ className?: string; useBorder?: boolean }>) => {
+  isFromLeft = false,
+}: PropsWithChildren<{ className?: string; useBorder?: boolean; isFromLeft?:boolean }>) => {
   return (
     <div
       className={twMerge(

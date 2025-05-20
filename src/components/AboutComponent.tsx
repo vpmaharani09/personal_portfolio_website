@@ -16,6 +16,7 @@ import smileMemoji from "@/assets/images/memoji-smile.png";
 import { CardHeader } from "@/components/CardHeader";
 import { ToolboxItems } from "@/components/ToolboxItems";
 import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const toolboxItems = [
   {
@@ -107,47 +108,73 @@ const hobbies = [
 
 export const AboutComponent = () => {
   const constraintRef = useRef(null);
+  // Animation variants for cards
+  const cardVariants = {
+    hiddenLeft: { x: -100, opacity: 0 },
+    hiddenRight: { x: 100, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { type: "tween", duration: 0.8, ease: "easeInOut" },
+    },
+  };
   return (
     <div className="">
       <div className="container">
         <div className="mt-10 flex flex-col gap-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
-            <Card className="h-[320px] md:col-span-2 lg:col-span-1">
-              <Image
-                src={location}
-                alt="Map"
-                className="h-full w-full object-cover object-left-top"
-              />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full bg-gradient-to-r from-purple to-[#38BDF8] after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple to-[#38BDF8] -z-20 animate-ping [animation-duration:2s]"></div>
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple to-[#38BDF8] -z-10"></div>
-                <Image
-                  src={smileMemoji}
-                  alt="smiling emoji"
-                  className="absolute top-1/2 left-1/2 w-14 h-14 -translate-x-1/2 -translate-y-1/2"
-                />
-              </div>
-            </Card>
-            <Card
-              className="h-[320px] md:col-span-3 lg:col-span-2 bg-[#13152D]"
-              useBorder={false}
+            <motion.div
+              variants={cardVariants}
+              initial="hiddenLeft"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              className="h-[320px] md:col-span-2 lg:col-span-1"
             >
-              <CardHeader
-                title="My Dev Kit"
-                description="A peek into the tech that powers my projects and makes dev life smoother."
-                className=""
-              />
-              <ToolboxItems
-                items={toolboxItems}
-                className=""
-                itemsWrapperClassName="animate-move-left [animation-duration:30s]"
-              />
-              <ToolboxItems
-                items={toolboxItems}
-                className="mt-6"
-                itemsWrapperClassName="animate-move-right [animation-duration:15s]"
-              />
-            </Card>
+              <Card className="h-[320px] md:col-span-2 lg:col-span-1">
+                <Image
+                  src={location}
+                  alt="Map"
+                  className="h-full w-full object-cover object-left-top"
+                />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full bg-gradient-to-r from-purple to-[#38BDF8] after:content-[''] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple to-[#38BDF8] -z-20 animate-ping [animation-duration:2s]"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple to-[#38BDF8] -z-10"></div>
+                  <Image
+                    src={smileMemoji}
+                    alt="smiling emoji"
+                    className="absolute top-1/2 left-1/2 w-14 h-14 -translate-x-1/2 -translate-y-1/2"
+                  />
+                </div>
+              </Card>
+            </motion.div>
+            <motion.div
+              variants={cardVariants}
+              initial="hiddenRight"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className="h-[320px] md:col-span-3 lg:col-span-2"
+            >
+              <Card
+                className="h-[320px] md:col-span-3 lg:col-span-2 bg-[#13152D]"
+                useBorder={false}
+              >
+                <CardHeader
+                  title="My Dev Kit"
+                  description="A peek into the tech that powers my projects and makes dev life smoother."
+                  className=""
+                />
+                <ToolboxItems
+                  items={toolboxItems}
+                  className=""
+                  itemsWrapperClassName="animate-move-left [animation-duration:30s]"
+                />
+                <ToolboxItems
+                  items={toolboxItems}
+                  className="mt-6"
+                  itemsWrapperClassName="animate-move-right [animation-duration:15s]"
+                />
+              </Card>
+            </motion.div>
           </div>
           {/* <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
             <Card className="h-[320px] p-0 flex flex-col md:col-span-3 lg:col-span-2">

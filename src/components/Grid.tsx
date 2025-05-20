@@ -33,6 +33,7 @@ const gridItems = [
   },
 ];
 
+
 const Grid = () => {
   return (
     <div className="mt-24">

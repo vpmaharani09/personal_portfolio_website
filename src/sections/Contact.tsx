@@ -1,11 +1,12 @@
 "use client";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import grainImage from "@/assets/images/grain.jpg";
+import { motion } from "framer-motion";
 
 export const ContactSection = () => {
   const onClick = () => {
     const phone = "6281234141500"; // Ganti dengan nomor tujuan
-    const text = `Hello, I’m interested in offering a project to you.`;
+    const text = `Hello, I'm interested in offering a project to you.`;
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 
     window.open(url, "_blank");
@@ -15,7 +16,13 @@ export const ContactSection = () => {
     <section id="contact">
       <div className="py-16 pt-12 lg:py-24 lg:pt-20">
         <div className="container">
-          <div className="bg-gradient-to-r from-purple to-sky-400 text-gray-900 py-8 px-10 rounded-3xl text-center md:text-left relative overflow-hidden z-0">
+          <motion.div
+            initial={{ y: 60, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            className="bg-gradient-to-r from-purple to-sky-400 text-gray-900 py-8 px-10 rounded-3xl text-center md:text-left relative overflow-hidden z-0"
+          >
             <div
               className="absolute inset-0 opacity-5 -z-10"
               style={{
@@ -42,7 +49,7 @@ export const ContactSection = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

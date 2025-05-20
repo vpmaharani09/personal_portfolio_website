@@ -8,6 +8,7 @@ import Lottie from "react-lottie";
 import animationData from "@/data/confetti.json";
 import MagicButton from "../MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
+import { motion } from "framer-motion";
 
 export const BentoGrid = ({
   className,
@@ -53,12 +54,27 @@ export const BentoGridItem = ({
 
   const handleCopy = () => {
     navigator.clipboard.writeText("vpmaharani09@gmail.com");
-
     setCopied(true);
   };
 
+  // Animation variants for slide-in effect
+  const variants = {
+    hidden: (custom: number) => {
+      if (custom === 1) return { x: -100, opacity: 0 };
+      if (custom === 2) return { x: 100, opacity: 0 };
+      if (custom === 3) return { y: 100, opacity: 0 };
+      return { opacity: 0 };
+    },
+    visible: {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      transition: { type: "tween", duration: 0.5, ease: "easeInOut" },
+    },
+  };
+
   return (
-    <div
+    <motion.div
       className={cn(
         "row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
         className
@@ -68,6 +84,11 @@ export const BentoGridItem = ({
         backgroundColor:
           "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
       }}
+      custom={id}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={variants}
     >
       <div className={`${id === 3 && "flex justify-center"} h-full`}>
         <div className="w-full h-full absolute">
@@ -138,6 +159,6 @@ export const BentoGridItem = ({
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

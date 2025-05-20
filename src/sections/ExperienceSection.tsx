@@ -1,6 +1,7 @@
 "use client";
 
 import { SectionHeader } from "@/components/SectionHeader";
+import { motion } from "framer-motion";
 
 const experiences = [
   {
@@ -15,7 +16,7 @@ const experiences = [
     ],
   },
   {
-    title: "Part Time Mobile Developer",
+    title: "Freelance Mobile Developer",
     company: "Krealogi Inovasi Digital",
     date: "Dec 2022 - Present",
     descriptions: [
@@ -35,6 +36,21 @@ const experiences = [
   },
 ];
 
+const fadeVariant = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.6 } },
+};
+
+const slideLeft = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7 } },
+};
+
+const slideRight = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7 } },
+};
+
 export default function ExperienceSection() {
   return (
     <div className="text-white py-16 lg:py-24 px-6 lg:px-20" id="experiences">
@@ -48,13 +64,23 @@ export default function ExperienceSection() {
         <div className="absolute top-0 bottom-0 left-6 lg:left-1/2 transform lg:-translate-x-1/2 w-1 bg-gray-700 z-0" />
 
         {experiences.map((exp, idx) => (
-          <div
+          <motion.div
             key={idx}
+            variants={idx % 2 === 0 ? slideLeft : slideRight}
+            initial="hidden"
+            whileInView="visible"
             className={`relative mb-20 flex flex-row items-start ${
               idx % 2 === 0 ? "lg:flex-row-reverse" : ""
             }`}
+            viewport={{ once: true, amount: 0.5 }}
           >
-            <div className="absolute top-0 left-6 lg:left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#1D1D29] rounded-full border-4 border-white z-10" />
+            <motion.div
+              variants={fadeVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              className="absolute top-0 left-6 lg:left-1/2 transFform -translate-x-1/2 w-6 h-6 bg-[#1D1D29] rounded-full border-4 border-white z-10"
+            />
 
             <div
               className={`w-full lg:w-1/2 pl-16 lg:px-6 ${
@@ -79,7 +105,7 @@ export default function ExperienceSection() {
             </div>
 
             {/* <div className="hidden md:flex md:w-1/2" /> */}
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

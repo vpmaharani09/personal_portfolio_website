@@ -23,7 +23,7 @@ const testimonials = [
   },
   {
     name: "Rizdian Dinata",
-    position: "Backend Developer @ PT. Koanba Indonesia",
+    position: "Backend Developer @ KipasKipas",
     text: "Rani is the kind of developer who doesn’t just code — she solves problems. Whether it's optimizing performance or improving design consistency, she always brings smart solutions to the table.",
     avatar: memojiAvatar3,
   },

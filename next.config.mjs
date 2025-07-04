@@ -43,6 +43,10 @@ const nextConfig = {
 
     return config;
   },
+  // Disable static generation for pages that use browser APIs
+  experimental: {
+    esmExternals: 'loose',
+  },
 };
 
 export default nextConfig;

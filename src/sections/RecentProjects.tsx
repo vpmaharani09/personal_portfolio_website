@@ -10,7 +10,7 @@ const projects = [
     des: "A personal website built with Next.js to showcase my work and experience as a developer. Designed with a modern and interactive style to leave a professional impression.",
     img: "/cover2.svg",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "https://github.com/vpmaharani09/personal_portfolio_website",
+    link: "https://itsranicodes.com",
   },
   {
     id: 2,

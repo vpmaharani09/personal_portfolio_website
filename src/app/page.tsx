@@ -6,6 +6,8 @@ import Hero from "@/sections/Hero/Hero";
 import AboutSection from "@/sections/AboutSection";
 import ExperienceSection from "@/sections/ExperienceSection";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <div className="relative bg-black-100 flex justify-center items-center flex-col mx-auto overflow-clip">

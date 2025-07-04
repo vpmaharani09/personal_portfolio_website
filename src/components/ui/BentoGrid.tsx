@@ -9,6 +9,7 @@ import animationData from "@/data/confetti.json";
 import MagicButton from "../MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
+import { ClientOnly } from "./ClientOnly";
 
 export const BentoGrid = ({
   className,
@@ -53,8 +54,10 @@ export const BentoGridItem = ({
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("vpmaharani09@gmail.com");
-    setCopied(true);
+    if (typeof window !== "undefined" && navigator && navigator.clipboard) {
+      navigator.clipboard.writeText("vpmaharani09@gmail.com");
+      setCopied(true);
+    }
   };
 
   // Animation variants for slide-in effect
@@ -114,9 +117,11 @@ export const BentoGridItem = ({
           )}
         </div>
         {id === 3 && (
-          <BackgroundGradientAnimation>
-            <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
-          </BackgroundGradientAnimation>
+          <ClientOnly>
+            <BackgroundGradientAnimation>
+              <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
+            </BackgroundGradientAnimation>
+          </ClientOnly>
         )}
 
         <div

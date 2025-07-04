@@ -71,7 +71,7 @@ const Hero = () => {
             className="mt-12 text-5xl lg:text-[88px] xl:text-7xl font-bold"
           >
             <h1 className="text-purple">Hey There,</h1>
-            <span className="text-white">I'm Rani!</span>
+            <span className="text-white">I&apos;m Rani!</span>
           </motion.div>
 
           {/* AWARDS */}

@@ -8,6 +8,13 @@ import Image from "next/image";
 import Speech from "./Speech";
 import certif from "@/assets/images/certif.png";
 import me from "@/assets/images/me.png";
+import mepurple from "@/assets/images/mepurple.png";
+import me2 from "@/assets/images/me2.png";
+import me3 from "@/assets/images/me3.png";
+import meborder from "@/assets/images/meborder.png";
+import melight from "@/assets/images/melight.png";
+import menatural from "@/assets/images/menatural.png";
+
 // import profile from "@/assets/images/profile.png";
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
@@ -81,7 +88,7 @@ const Hero = () => {
               variants={awardVariants}
               className="text-xs md:text-base text-[#ddd] my-4"
             >
-              Building fast, responsive, and modern web applications.
+              Building fast, responsive, and modern applications.
             </motion.p>
             <motion.div
               variants={awardVariants}
@@ -270,7 +277,7 @@ const Hero = () => {
           </Canvas>
           <div className="absolute bottom-0 right-0 left-0 xl:h-[80%] lg:w-[60%] w-full h-full flex justify-center items-end md:m-auto">
             <Image
-              src={me}
+              src={mepurple}
               alt="3d"
               className="w-full h-full md:max-w-full object-contain"
             />

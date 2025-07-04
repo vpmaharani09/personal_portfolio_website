@@ -6,35 +6,49 @@ import { motion } from "framer-motion";
 const projects = [
   {
     id: 1,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
+    title: "Personal Portfolio",
+    des: "A personal website built with Next.js to showcase my work and experience as a developer. Designed with a modern and interactive style to leave a professional impression.",
     img: "/cover2.svg",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "/ui.earth.com",
+    link: "https://github.com/vpmaharani09/personal_portfolio_website",
   },
   {
     id: 2,
-    title: "Yoom - Video Conferencing App",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/cover3.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "/ui.yoom.com",
+    title: "Caredokter - Healthcare App",
+    des: "A mobile app that lets users book healthcare services and doctors at Mandaya Royal Puri Hospital. Bringing healthcare services right to your fingertips.",
+    img: "/cover.svg",
+    iconLists: [
+      "/flutter.svg",
+      "/dart.svg",
+      "/firebase.svg",
+      "/android.svg",
+      "/ios.svg",
+    ],
+    link: "https://caredokter.com/download/",
   },
   {
     id: 3,
-    title: "AI Image SaaS - Canva Application",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/cover4.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "/ui.aiimg.com",
+    title: "Michan - Mabar Online App",
+    des: "A mobile app that connects users to play together with pro players or other registered players. Includes features like chat, voice calls, and audio rooms.",
+    img: "/cover5.svg",
+    iconLists: [
+      "/flutter.svg",
+      "/dart.svg",
+      "/zg.svg",
+      "/stream.svg",
+      "/firebase.svg",
+      "/android.svg",
+      "/ios.svg",
+    ],
+    link: "",
   },
   {
     id: 4,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/cover5.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "/ui.apple.com",
+    title: "TaskFocus - Productivity App",
+    des: "A mobile-first website that helps manage time with the Pomodoro method, enhanced with task assignment features for better focus and productivity.",
+    img: "/cover3.svg",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+    link: "https://github.com/vpmaharani09/pomodoro-app",
   },
 ];
 
@@ -130,13 +144,32 @@ const RecentProjects = () => {
                         </div>
 
                         <div className="flex justify-center items-center">
-                          <p className="flex lg:text-lg md:text-lg text-sm text-purple">
-                            Check Live Site
-                          </p>
-                          <FaLocationArrow
-                            className="ms-3 lg:text-lg md:text-lg text-sm"
-                            color="#CBACF9"
-                          />
+                          {link && link.trim() !== "" ? (
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                window.open(
+                                  link,
+                                  "_blank",
+                                  "noopener,noreferrer"
+                                );
+                              }}
+                              className="flex lg:text-lg md:text-lg text-sm text-purple hover:text-purple/80 transition-colors cursor-pointer"
+                            >
+                              Check Live Site
+                            </button>
+                          ) : (
+                            <p className="flex lg:text-lg md:text-lg text-sm text-gray-500 cursor-not-allowed">
+                              On Development
+                            </p>
+                          )}
+                          {link && link.trim() !== "" && (
+                            <FaLocationArrow
+                              className="ms-3 lg:text-lg md:text-lg text-sm"
+                              color="#CBACF9"
+                            />
+                          )}
                         </div>
                       </div>
                     </div>

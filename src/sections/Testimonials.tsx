@@ -9,35 +9,29 @@ import { Card } from "@/components/Card";
 import { Fragment } from "react";
 
 const testimonials = [
+  // {
+  //   name: "Marisa Ghassani",
+  //   position: "UI/UX Developer @ Mandaya Royal Hospital Puri",
+  //   text: "Working with Rani has been an absolute pleasure. She’s not only technically skilled, but also a great team player who’s always open to feedback and collaboration. Our project wouldn’t have been the same without his frontend expertise.",
+  //   avatar: memojiAvatar1,
+  // },
   {
-    name: "Alex Turner",
-    position: "Marketing Manager @ TechStartups",
-    text: "Alex was instrumental in transforming our website into a powerful marketing tool. His attention to detail and ability to understand our brand is exceptional. We're thrilled with the results!",
-    avatar: memojiAvatar1,
-  },
-  {
-    name: "Olivia Green",
-    position: "Head of Design @ GreenLeaf",
-    text: "Working with Alex was a pleasure. His expertise in frontend development brought our designs to life in a way we never imagined. The website has exceeded our expectations.",
+    name: "Anggit Prayogo",
+    position: "Android Developer @ Accenture",
+    text: "Rani consistently delivers high-quality frontend work on time. She understands the requirements quickly and transforms ideas into beautiful, functional interfaces. I highly recommend working with him.",
     avatar: memojiAvatar2,
   },
   {
-    name: "Daniel White",
-    position: "CEO @ InnovateCo",
-    text: "Alex's ability to create seamless user experiences is unmatched. Our website has seen a significant increase in conversions since launching the new design. We couldn't be happier.",
+    name: "Rizdian Dinata",
+    position: "Backend Developer @ PT. Koanba Indonesia",
+    text: "Rani is the kind of developer who doesn’t just code — she solves problems. Whether it's optimizing performance or improving design consistency, she always brings smart solutions to the table.",
     avatar: memojiAvatar3,
   },
   {
-    name: "Emily Carter",
-    position: "Product Manager @ GlobalTech",
-    text: "Alex is a true frontend wizard. He took our complex product and transformed it into an intuitive and engaging user interface. We're already seeing positive feedback from our customers.",
+    name: "Erlan Sentosa",
+    position: "UI/UX Developer @ Mandaya Royal Hospital Puri",
+    text: "I had the pleasure of working with Rani on the redesign of the Outpatient Queue project. She’s a brilliant and dedicated mobile developer who consistently delivered high-quality work. Rani skillfully applied the complex mobile interactions I designed, and her problem-solving and reliability made a real difference to our team. Any company would be lucky to have her.",
     avatar: memojiAvatar4,
-  },
-  {
-    name: "Michael Brown",
-    position: "Director of IT @ MegaCorp",
-    text: "Alex's work on our website has been nothing short of exceptional. He's a talented developer who is also a great communicator. We highly recommend him.",
-    avatar: memojiAvatar5,
   },
 ];
 
@@ -47,9 +41,9 @@ export const TestimonialsSection = () => {
       <div className="py-16 lg:py-24">
         <div className="container">
           <SectionHeader
-            title="Happy Clients"
-            eyebrow="What Clients Say about Me"
-            description="Don't just take my word for it. See what my clients have to say about my word"
+            title="Happy Partners"
+            eyebrow="What Partners Say about Me"
+            description="Don't just take my word for it. See what my partners have to say about my work"
           />
           <div className="mt-12 lg:mt-20 flex overflow-x-clip [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4 -my-4">
             <div className="flex gap-8 pr-8 flex-none animate-move-left [animation-duration:90s] hover:[animation-play-state:paused]">
